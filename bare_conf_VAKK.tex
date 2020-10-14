@@ -30,7 +30,7 @@
 
 \begin{document}
 
-\title{On-Chip Output Stage Design for  \color{blue} A \color{black} Continuous Class F Power Amplifier}
+\title{On-Chip Output Stage Design for a  Continuous Class F Power Amplifier}
 
 \author{\IEEEauthorblockN{Anil Kumar Kumaran\IEEEauthorrefmark{1},
 M. D'Avino\IEEEauthorrefmark{2},
@@ -38,7 +38,7 @@ Leo C.N. de Vreede\IEEEauthorrefmark{1}, and
 Morteza S. Alavi 
 \IEEEauthorrefmark{1}} 
 \IEEEauthorblockA{\IEEEauthorrefmark{1} Electronic Circuits and Architecture (ELCA) Research Group, Delft University of Technology \\
-	\IEEEauthorblockA{\IEEEauthorrefmark{2} Catena B.V., Delft, The Netherlands} \\Email: a.k.kumaran@tudelft.nl}}
+	\IEEEauthorblockA{\IEEEauthorrefmark{2} Catena B.V., Delft, The Netherlands} Email: a.k.kumaran@tudelft.nl}}
 
 \maketitle
 
@@ -53,7 +53,7 @@ The design comprising a second harmonic trap and no RF choke is chosen \color{bl
 Continuous class F (CCF), Output matching network, Power amplifier (PA), Harmonic termination, Differential mode analysis, Common mode analysis. 
 \end{IEEEkeywords}
 
-
+%\vspace{-0.1in}
 
 \ifCLASSOPTIONpeerreview
 \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
@@ -64,8 +64,8 @@ Continuous class F (CCF), Output matching network, Power amplifier (PA), Harmoni
 \section{Introduction}
 Today, there is an increased demand for high-speed and low-cost transmissions in 4/5G and wireless connectivity networks. A CMOS-based transmitter (TX) is a viable architecture to address these requirements as it facilitates the implementation of System-on-Chip (SoC) solution at a low cost. However, the TX power amplifier (PA) is the most challenging blocks in making CMOS SoC, because it should offer high-efficiency while meeting the stringent spectral mask  and in-band linearity requirements of wireless systems even at backed-off power levels. Currently, most of TX architectures employ linear class A/B PAs. Nevertheless, their ideal  peak efficiencies are only \textit{50}/\textit{78\%} respectively, due to a large overlap between the drain voltage/current  waveforms (Fig.\ref{fig:wave_VI}a/b).
 
-On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%} by utilizing harmonic-frequency resonators to make short-circuit at even harmonics and open-circuit at odd harmonics to engineer the drain voltage and current with no overlap (refer Fig. \ref{fig:ICF_wave_VI}). But in reality, controlling all the harmonics doesn't provide much increase in peak efficiency. On the other hand, it increases the complexity of circuit and component losses which in turn reduces efficiency. Therefore, practical implementation of class F use up to $3^{rd}$ harmonic in the voltage waveform and achieves peak efficiency of \textit{90.7\%} due to increase in overlap region compared to ideal class F (shown in Fig. \ref{fig:ICF_wave_VI}) \cite{Raab_max_eff}.
-\begin{figure}[h]
+On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%} by utilizing harmonic-frequency resonators to make short-circuit at even harmonics and open-circuit at odd harmonics to engineer the drain voltage and current with no overlap (refer Fig. \ref{fig:ICF_wave_VI}). But in reality, controlling all the harmonics doesn't provide much increase in peak efficiency. On the other hand, it increases the complexity of circuit and component losses which in turn reduces efficiency. Therefore, practical implementation of class F use up to $3^{rd}$ harmonic in the voltage waveform and achieves peak efficiency of \textit{90.7\%} due to increase in overlap region compared to ideal class F (Fig. \ref{fig:ICF_wave_VI}) \cite{Raab_max_eff}.
+\begin{figure}[!t]
 \centering
 \captionsetup{font=footnotesize}
 \begin{subfigure}{0.24\textwidth}
@@ -88,7 +88,7 @@ On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%}
 \caption{Practical Class F}
 \label{fig:CF_wave_VI}
 \end{subfigure}
-\caption{\color{blue}The class A/B/F drain \color{blue} voltage (V)/current (I) waveforms. \color{black}}
+\caption{The class A/B/F drain  voltage (V)/current (I) waveforms. \color{black}}
 \label{fig:wave_VI}
 \vspace{-0.25in}
 \end{figure}
@@ -113,7 +113,7 @@ Z_{3f}=\infty
 \end{equation}
 Fig. \ref{fig:CF_wave_VI} shows that the peak factor in class F is \textit{2}. Practical implementation of class F PA has a peak efﬁciency of \textit{90.7\%} but the main drawback is that they have limited bandwidths (typically \textit{10\%}) owing to the need for short and open circuit harmonic terminations. Thus, to realize wider bandwidth, the CCF PA has been proposed \cite{CCF_reason}.
 
-The Section \ref{section:CCF} explains in brief the equation governing the operation of CCF. This is followed by Section \ref{section:ON} which discusses the procedure to design the different output networks for CCF. Then, the Section \ref{section:Results} comprises of the comparison results of \textit{4} proposed output network designs. Finally, Section \ref{section:Conclusion} concludes this paper.   
+The Section \ref{section:CCF} explains in brief the equation governing the operation of CCF. This is followed by Section \ref{section:ON} which discusses the procedure to design the different output networks for CCF. Then, the Section \ref{section:Results} comprises of the comparison results of four proposed output network designs. Finally, Section \ref{section:Conclusion} concludes this paper.   
 
 \section{Continuous Class F}
 \label{section:CCF}
@@ -123,7 +123,7 @@ Compared to class F, the CCF has an imaginary part added at the fundamental and 
 V_{DS}=\underbrace{1}_{\text{DC}}-\underbrace{\frac{2}{\sqrt{3}} \cos \theta-\gamma \sin \theta}_{\text{Fundamental}}+\underbrace{\frac{7 \gamma}{6 \sqrt{3}} \sin 2 \theta}_{\text{$2^{nd}$ harmonic}}+\underbrace{\frac{1}{3 \sqrt{3}} \cos 3 \theta}_{\text{$3^{rd}$ harmonic}}
 \label{eqn_CCF_V}
 \end{equation}
-$I_{D}$ is a half sinusoid as in class F and given by Eqn. \ref{eqn_CCF_I}. It is seen that $V_{DS}$ and $I_{D}$ are chosen in such a way that no power is dissipated at higher harmonics. Also, the $\gamma$ in Equation \ref{eqn_CCF_V} doesn’t affect drain efficiency ($\eta_D$) mathematically. But the voltage waveform’s shape (peak factor) depends on $\gamma$ which is depicted in Fig. \ref{fig:CCF_wave_VI}. 
+$I_{D}$ is a half sinusoid as in class F and given by Eqn. \ref{eqn_CCF_I}. It is seen that $V_{DS}$ and $I_{D}$ are chosen in such a way that no power is dissipated at higher harmonics. Also, the $\gamma$ in Eqn. \ref{eqn_CCF_V} doesn’t affect drain efficiency ($\eta_D$) mathematically. But the voltage waveform’s shape (peak factor) depends on $\gamma$ which is depicted in Fig. \ref{fig:CCF_wave_VI}. 
 But in reality, $I_{D}$ depends on $V_{DS}$, so $\eta_D$ reduces as $\gamma$ increases.
 
 \begin{figure}[!t]
@@ -146,7 +146,7 @@ Z_{3f}=\infty
 \end{aligned}
 \end{equation}
 
-In CCF, $Z_{3f}$ remains open-circuited similar to class F. Meanwhile, $Z_{1f}$ and $Z_{2f}$ has a reactive part, unlike Class F. From the Eqn. \ref{eqn_CCF_imp} and Fig. \ref{fig:CCF_SC}, it is observed that if the reactive part of $Z_{1f}$ changes from inductive to capacitive, then the reactive part of $Z_{2f}$ need to change from capacitive to inductive or vice-versa across the bandwidth to achieve CCF operation. In the next section, the design procedure for the \textit{4} output networks is illustrated step by step.
+In CCF, $Z_{3f}$ remains open-circuited similar to class F. Meanwhile, $Z_{1f}$ and $Z_{2f}$ has a reactive part, unlike class F. From the Eqn. \ref{eqn_CCF_imp} and Fig. \ref{fig:CCF_SC}, it is observed that if the reactive part of $Z_{1f}$ changes from inductive to capacitive, then the reactive part of $Z_{2f}$ need to change from capacitive to inductive or vice-versa across the bandwidth to achieve CCF operation. In the next section, the design procedure for the four output networks is illustrated step by step.
 
 \begin{figure}[!t]
 \centering
@@ -170,7 +170,7 @@ The PA in this paper is designed for a peak power of \textit{27 dBm} for the ope
 \label{eqn_diff_imp}
 \end{aligned}
 \end{equation}
-The requirements of the output network for CCF is exhibited in Tab. \ref{tab:Output_Network_Requirements}. The PA operates in Class F mode at the center frequency $\omega_0$ (\textit{2.4 GHz}) with a short at $2\omega_0$ (\textit{4.8 GHz}) and an open at $3\omega_0$ (\textit{7.2 GHz}). But, for all other frequencies, the PA performs in the CCF mode. 
+The requirements of the output network for CCF is exhibited in Tab. \ref{tab:Output_Network_Requirements}. The PA operates in class F mode at the center frequency $\omega_0$ (\textit{2.4 GHz}) with a short at $2\omega_0$ (\textit{4.8 GHz}) and an open at $3\omega_0$ (\textit{7.2 GHz}). But, for all other frequencies, the PA performs in the CCF mode. 
 
 \setlength{\arrayrulewidth}{0.5mm}
 \setlength{\tabcolsep}{2pt}
@@ -193,7 +193,7 @@ The requirements of the output network for CCF is exhibited in Tab. \ref{tab:Out
 \vspace{-0.25in}
 \end{table}
 
-Fig. \ref{fig:Design_A_FC} and \ref{fig:Design_B_C_D}a/b/c shows the schematics of \textit{4} output networks which are designed using lossless lumped components.. 
+Fig. \ref{fig:Design_A_FC} and \ref{fig:Design_B_C_D}a/b/c shows the schematics of four output networks which are designed using lossless lumped components.. 
 All the designs have a balun and a load capacitance ($C_L$), because the balun converts differential-ended signal to single-ended signal as the load is single-ended, whereas $C_L$ shorts the $R_L$ (\textit{50} $\Omega$) at $3^{rd}$ harmonic to obtain high impedance. Drain source capacitance of the transistor (assume $C_{DS}=1.87\hspace{1mm}pF$) is absorbed into the output network to reduce its impact on the PA performance. The balun is modelled using ideal transformer, magnetizing inductance ($L_m$), leakage inductance ($L_k$), primary inductance ($L_P$) and coupling coefficient ($km$) \cite{Transformer_model}. 
 
 \subsection{Design A (no RF choke \& with $L_2C_2$)}
@@ -271,7 +271,7 @@ However, this leads to a lower $3^{rd}$ harmonic impedance as showcased in Fig. 
 \vspace{-0.2in}
 \end{figure}
 
-The \textit{5} unknowns in the circuit: $km$, $N$, $L_P$, $C_2$, and $C_L$ can be calculated by assuming one of them and using \textit{4} equations ($\Re(Z_{SB})(\omega_0) =  29.8\hspace{1mm} \Omega$, $\Im(Z_{SB})(\omega_0) = 16.6\hspace{1mm}\Omega$, $\Re(Z_{SB})(3\omega_0) = 0.5\hspace{1mm}\Omega$ and  $\Im(Z_{SB})(3\omega_0) = 24.96\hspace{1mm}\Omega$). In this paper, $km =$ \textit{0.8} is assumed and the remaining unknowns ($N =$ \textit{1.34}, $L_P =$ \textit{2.2 nH}, $C_L =$ \textit{0.9 pF}, $C_2 =$ \textit{1.5 pF}, $L_2 =$ \textit{0.73 nH}) are calculated. The $km$ can be varied to get different sets of results in which $L_P$ is minimal and thereby making it layout friendly.
+The five unknowns in the circuit: $km$, $N$, $L_P$, $C_2$, and $C_L$ can be calculated by assuming one of them and using four equations ($\Re(Z_{SB})(\omega_0) =  29.8\hspace{1mm} \Omega$, $\Im(Z_{SB})(\omega_0) = 16.6\hspace{1mm}\Omega$, $\Re(Z_{SB})(3\omega_0) = 0.5\hspace{1mm}\Omega$ and  $\Im(Z_{SB})(3\omega_0) = 24.96\hspace{1mm}\Omega$). In this paper, $km =$ \textit{0.8} is assumed and the remaining unknowns ($N =$ \textit{1.34}, $L_P =$ \textit{2.2 nH}, $C_L =$ \textit{0.9 pF}, $C_2 =$ \textit{1.5 pF}, $L_2 =$ \textit{0.73 nH}) are calculated. The $km$ can be varied to get different sets of results in which $L_P$ is minimal and thereby making it layout friendly.
 
 
 \subsection{Design B (no RF choke \& no $L_2C_2$)}
@@ -299,22 +299,22 @@ The \textit{5} unknowns in the circuit: $km$, $N$, $L_P$, $C_2$, and $C_L$ can b
 \vspace{-0.25in}
 \end{figure}
 
-In this design (Fig. \ref{fig:Design_B_FC}), $L_2C_2$ is removed so it reduces the number of unknowns. Like the previous case, differential mode analysis yields \textit{4} equations and there are \textit{4} unknowns, thus leading to a single set of values for $km =$ \textit{0.72}, $N =$ \textit{0.9}, $L_P =$ \textit{0.63 nH}, $C_L =$ \textit{3.96 pF}, unlike design A. $C_{DCP}$ is tuned to provide a short at $2\omega_0$ such that $C_{DCP}$ resonates with $L_P$, $L_{BND}$ and $C_{DS}$ which is obtained from the common mode analysis. Moreover, $C_{DCP}$ provides RF ground and blocks DC.
+In this design (Fig. \ref{fig:Design_B_FC}), $L_2C_2$ is removed so it reduces the number of unknowns. Like the previous case, differential mode analysis yields four equations and there are four unknowns, thus leading to a single set of values for $km =$ \textit{0.72}, $N =$ \textit{0.9}, $L_P =$ \textit{0.63 nH}, $C_L =$ \textit{3.96 pF}, unlike design A. $C_{DCP}$ is tuned to provide a short at $2\omega_0$ such that $C_{DCP}$ resonates with $L_P$, $L_{BND}$ and $C_{DS}$ which is obtained from the common mode analysis. Moreover, $C_{DCP}$ provides RF ground and blocks DC.
 
 \subsection{Design C (with RF choke \& with $L_2C_2$)}
-In this design (Fig. \ref{fig:Design_C_FC}), $V_{DD}$ is supplied through RF choke unlike the previous designs. RF chokes are assumed to have a fixed value of \textit{5 nH}. The differential mode analysis yields \textit{4} equations similar to design A. Assuming $km =$ \textit{0.8}, the other unknowns are calculated as $N =$ \textit{1.14}, $L_P =$ \textit{2.23 nH}, $C_L =$ \textit{1.10 pF}, $C_2 =$ \textit{1.37 pF}.
+In this design (Fig. \ref{fig:Design_C_FC}), $V_{DD}$ is supplied through RF choke unlike the previous designs. RF chokes are assumed to have a fixed value of \textit{5 nH}. The differential mode analysis yields four equations similar to design A. Assuming $km =$ \textit{0.8}, the other unknowns are calculated as $N =$ \textit{1.14}, $L_P =$ \textit{2.23 nH}, $C_L =$ \textit{1.10 pF}, $C_2 =$ \textit{1.37 pF}.
 Like design A, $C_2$ should resonate out with $L_2$ to get short at $2\omega_0$. Thus, $L_2 =$ \textit{0.8 nH}. 
 
 \subsection{Design D (with RF choke \& no $L_2C_2$)}
  Unlike design C, $L_2C_2$ is removed in this design (Fig. \ref{fig:Design_D_FC}). Also, RF choke should be calculated assuming $C_{DS}$ resonates with it at $\omega_0$ (RF Choke = \textit{2.35 nH}).
-The differential mode analysis yields \textit{4} equations and the \textit{4} unknowns ($N =$ \textit{0.84}, $L_P =$ \textit{0.86 nH}, $C_L =$ \textit{3.95 pF}, $km =$ \textit{0.77}) can be calculated.
+The differential mode analysis yields four equations and the four unknowns ($N =$ \textit{0.84}, $L_P =$ \textit{0.86 nH}, $C_L =$ \textit{3.95 pF}, $km =$ \textit{0.77}) can be calculated.
 $C_{DCP}$ can be tuned to provide a short at $2\omega_0$.
 
 \section{Results}
 \label{section:Results}
 
-Fig. \ref{fig:Comp_1H_2H_3H}a/b show that all the \textit{4} designs satisfying the main CCF requirements which is decreasing trend of the reactive part at fundamental and increasing trend of the reactive part at $2^{nd}$ harmonic.
-From Fig. \ref{fig:Comp_1H}, it is seen that the real part at fundamental is flatter in the bandwidth \textit{2.1 - 2.7 GHz} for design A and C which, in turn, leads to constant $P_{OUT}$ in the specified bandwidth unlike design B and D. The $L_2C_2$ which acts as a varying capacitor at fundamental hold the reason for this. The designs B and D have a higher reactive part at the fundamental as compared to other designs which in turn leads to larger $\gamma$ value (refer Eqn. \ref{eqn_CCF_imp}) and thus, higher peak factor (refer Fig. \ref{fig:CCF_wave_VI}). Fig. \ref{fig:Comp_1H_2H_3H}b/c show that all the \textit{4} designs have similar response at $2^{nd}$ and $3^{rd}$ harmonic. 
+Fig. \ref{fig:Comp_1H_2H_3H}a/b show that all the four designs satisfying the main CCF requirements which is decreasing trend of the reactive part at fundamental and increasing trend of the reactive part at $2^{nd}$ harmonic.
+From Fig. \ref{fig:Comp_1H}, it is seen that the real part at fundamental is flatter in the bandwidth \textit{2.1 - 2.7 GHz} for design A and C which, in turn, leads to constant $P_{OUT}$ in the specified bandwidth unlike design B and D. The $L_2C_2$ which acts as a varying capacitor at fundamental hold the reason for this. The designs B and D have a higher reactive part at the fundamental as compared to other designs which in turn leads to larger $\gamma$ value (refer Eqn. \ref{eqn_CCF_imp}) and thus, higher peak factor (refer Fig. \ref{fig:CCF_wave_VI}). Fig. \ref{fig:Comp_1H_2H_3H}b/c show that all the four designs have similar response at $2^{nd}$ and $3^{rd}$ harmonic. 
 %The impedance at \textit{2.1 GHz} and \textit{2.7 GHz} is less than \textit{200} $\Omega$ for all the \textit{4} designs.
 
 \begin{figure}[!t]
@@ -359,14 +359,14 @@ So from the simulation, it is seen that design A outperforms other designs since
 \caption{}
 \label{fig:Comp_Pout}
 \end{subfigure}
-\caption{(a) Maximum drain efficiency across frequency for 4 different output network; (b) Peak $P_{OUT}$ across frequency for 4 different output network.}
+\caption{(a) Maximum drain efficiency across frequency for four different output network; (b) Peak $P_{OUT}$ across frequency for four different output network.}
 \label{fig:Comp_Pout_DE}
 \vspace{-0.25in}
 \end{figure}
 
 \section{Conclusion}
 \label{section:Conclusion}
-This paper presented CCF's wide operational bandwidth advantage over its class F companion. It detailed the primary requirement of the CCF PA output network, which is if the reactive part of $1^{st}$ harmonic decreases, then the reactive part of $2^{nd}$ harmonic should increase. Furthermore, the procedure to design the \textit{four} different output networks for the \textit{2.1 -- 2.7 GHz} band was proposed and analyzed in detail.  Consequently, design A, with no RF choke and  including a 2$^{nd}$ harmonic trap, was chosen because it offers relatively constant output RF power in the desired frequency band with the least number of lumped components.
+This paper presented CCF's wide operational bandwidth advantage over its class F companion. It detailed the primary requirement of the CCF PA output network, which is if the reactive part of $1^{st}$ harmonic decreases, then the reactive part of $2^{nd}$ harmonic should increase. Furthermore, the procedure to design the four different output networks for the \textit{2.1 -- 2.7 GHz} band was proposed and analyzed in detail.  Consequently, design A, with no RF choke and  including a 2$^{nd}$ harmonic trap, was chosen because it offers relatively constant output RF power in the desired frequency band with the least number of lumped components.
 
 \bibliographystyle{IEEEtran}
 \bibliography{disseration.bib}
