@@ -44,7 +44,7 @@ Morteza S. Alavi
 
 \begin{abstract}
 Continuous Class F (CCF) power amplifiers (PAs) overcome Class F PA's disadvantage of narrow bandwidth by eliminating short-circuit requirements at the $2^{nd}$ harmonic. At the same time, CCF maintains a peak efficiency of \textit{90.7\%}, which is higher than the traditional Class A and B peak efficiency. This paper explains the equations governing the CCF mode of operation and then illustrates the step by step procedure to design  four different output networks for CCF using lossless lumped components for a \textit{2.1--2.7 GHz} band.
-The design comprising a second harmonic trap and no RF choke is chosen \color{blue} due to presenting \color{black} a flatter real part impedance along with a smaller reactive part at the $1^{st}$ harmonic, and  the least number of on-chip lumped components.
+The design comprising a second harmonic trap and no RF choke is chosen \color{blue} due to its \color{black} flatter real part impedance \color{blue} and \color{black} smaller reactive part at the \color{blue} fundamental, \color{black} and  the least number of on-chip lumped components.
 \end{abstract}
 
 \vspace{1mm}
@@ -62,9 +62,9 @@ Continuous class F (CCF), Output matching network, Power amplifier (PA), Harmoni
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Today, there is an increased demand for high-speed and low-cost transmissions in 4/5G and wireless connectivity networks. A CMOS-based transmitter (TX) is a viable architecture to address these requirements as it facilitates the implementation of System-on-Chip (SoC) solution at a low cost. However, the TX power amplifier (PA) is the most challenging blocks in making CMOS SoC, because it should offer high-efficiency while meeting the stringent spectral mask  and in-band linearity requirements of wireless systems even at backed-off power levels. Currently, most of TX architectures employ linear class A/B PAs. Nevertheless, their ideal  peak efficiencies are only \textit{50}/\textit{78\%} respectively, due to a large overlap between the drain voltage/current  waveforms (Fig.\ref{fig:wave_VI}a/b).
+Today, there is an increased demand for high-speed and low-cost transmissions in 4/5G and wireless connectivity networks. A CMOS-based transmitter (TX) is a viable architecture to address these requirements as it facilitates the implementation of System-on-Chip (SoC) solution at a low cost. However, the TX power amplifier (PA) is the most challenging blocks in making CMOS SoC, because it should offer high-efficiency while meeting the stringent spectral mask  and in-band linearity requirements of wireless systems even at backed-off power levels. Currently, most of TX architectures employ linear class A/B PAs. Nevertheless, their ideal  peak efficiencies are only \textit{50}/\textit{78\%}, respectively, due to a large overlap between the drain voltage/current  waveforms (Fig.\ref{fig:wave_VI}a/b).
 
-On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%} by utilizing harmonic-frequency resonators to make short-circuit at even harmonics and open-circuit at odd harmonics to engineer the drain voltage and current with no overlap (refer Fig. \ref{fig:ICF_wave_VI}). But in reality, controlling all the harmonics doesn't provide much increase in peak efficiency. On the other hand, it increases the complexity of circuit and component losses which in turn reduces efficiency. Therefore, practical implementation of class F use up to $3^{rd}$ harmonic in the voltage waveform and achieves peak efficiency of \textit{90.7\%} due to increase in overlap region compared to ideal class F (Fig. \ref{fig:ICF_wave_VI}) \cite{Raab_max_eff}.
+On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%} by utilizing harmonic-frequency resonators \color{blue} to short-circuit \color{black} at even harmonics and open-circuit at odd harmonics \color{blue} leading to non-overlap drain voltage/current waveforms (Fig. \ref{fig:ICF_wave_VI}). Nevertheless, in reality,  \color{black} controlling all \color{blue} harmonics is challenging and increases the network complexity and component losses, degrading its passive efficiency. \color{black} Therefore, practical implementation of class F \color{blue} employs \color{black} up to $3^{rd}$ harmonic \color{blue} impedance terminations and \color{black}  achieves \color{blue} a \color{black} peak efficiency of \textit{90.7\%} due to \color{blue} increasing the overlap region between the drain voltage and current \color{black} compared to \color{blue} the \color{black} ideal class F (Fig. \ref{fig:ICF_wave_VI}) \cite{Raab_max_eff}.
 \begin{figure}[!t]
 \centering
 \captionsetup{font=footnotesize}
@@ -92,17 +92,17 @@ On the other hand, class F PAs ideally achieve peak efficiency of \textit{100\%}
 \label{fig:wave_VI}
 \vspace{-0.25in}
 \end{figure}
-Generalized drain source voltage ($V_{DS}$) containing all frequencies up to $3^{rd}$ harmonic \cite{Gen_Vds_eqn} is given by:
+Generalized drain source\color{blue}-\color{black}voltage ($V_{DS}$) containing all frequencies up to $3^{rd}$ harmonic \cite{Gen_Vds_eqn} is given by:
 \begin{equation}
-V_{DS}=\underbrace{1}_{\text{DC}}-\underbrace{\frac{2}{\sqrt{3}} \cos \theta}_{\text{Fundamental}}+\underbrace{\frac{1}{3 \sqrt{3}} \cos 3 \theta}_{\text{$3^{rd}$ harmonic}}
+V_{DS}=\underbrace{1}_{\text{DC}}-\underbrace{\frac{2}{\sqrt{3}} \cos \theta}_{\text{fundamental}}+\underbrace{\frac{1}{3 \sqrt{3}} \cos 3 \theta}_{\text{$3^{rd}$ harmonic}}
 \label{eqn_CF_V}
 \end{equation}
-Drain current ($I_{D}$) which is a half-sine wave is given by
+\color{blue} The drain \color{black}  current ($I_{D}$)\color{blue}, which is a half-sine wave, \color{black} is given by
 \begin{equation}
-I_{D}=\underbrace{\frac{1}{\pi}}_{\text{DC}}+\underbrace{\frac{1}{2} \cos \theta}_{\text{Fundamental}}+\underbrace{\frac{2}{3 \pi} \cos 2 \theta}_{\text{$2^{nd}$ harmonic}}-\underbrace{\frac{2}{15 \pi} \cos 4 \theta}_{\text{$4^{th}$ harmonic}}
+I_{D}=\underbrace{\frac{1}{\pi}}_{\text{DC}}+\underbrace{\frac{1}{2} \cos \theta}_{\text{fundamental}}+\underbrace{\frac{2}{3 \pi} \cos 2 \theta}_{\text{$2^{nd}$ harmonic}}-\underbrace{\frac{2}{15 \pi} \cos 4 \theta}_{\text{$4^{th}$ harmonic}}
 \label{eqn_CCF_I}
 \end{equation}
-Load impedance in the fundamental, $2^{nd}$ and $3^{rd}$  harmonic bands are represented by $Z_{1f}$, $Z_{2f}$ and $Z_{3f}$ respectively.
+\color{blue} The load impedances at the fundamental, $2^{nd}$ and $3^{rd}$ harmonic \color{black}  are represented by $Z_{1f}$, $Z_{2f}$\color{blue} , and $Z_{3f}$, \color{black} respectively.
 \begin{equation}
 \begin{aligned}
 Z_{1f}=\frac{4}{\sqrt{3}}, \hspace{3mm}
@@ -111,20 +111,19 @@ Z_{3f}=\infty
 \end{aligned}
 \label{eqn_CF}
 \end{equation}
-Fig. \ref{fig:CF_wave_VI} shows that the peak factor in class F is \textit{2}. Practical implementation of class F PA has a peak efﬁciency of \textit{90.7\%} but the main drawback is that they have limited bandwidths (typically \textit{10\%}) owing to the need for short and open circuit harmonic terminations. Thus, to realize wider bandwidth, the CCF PA has been proposed \cite{CCF_reason}.
+\color{blue} As depicted in Fig. \ref{fig:CF_wave_VI},  one of the advantages of class F PAs is that its normalized peak drain voltage is two. Nonetheless, they suffer from limited operational bandwidth \color{black}  (typically \textit{10\%}) owing to the need for short and open circuit harmonic terminations. Thus, to realize wider bandwidth, the \color{blue} continuous class F (CCF) \color{black} PA has been proposed \cite{CCF_reason}.
 
-The Section \ref{section:CCF} explains in brief the equation governing the operation of CCF. This is followed by Section \ref{section:ON} which discusses the procedure to design the different output networks for CCF. Then, the Section \ref{section:Results} comprises of the comparison results of four proposed output network designs. Finally, Section \ref{section:Conclusion} concludes this paper.   
+\color{blue} In this paper, we propose an on-chip CCF output stage network. This paper is organized as follows. Section \ref{section:CCF} briefly explains the equations governing the operation of CCF. Section \ref{section:ON} discusses the design procedure of different CCF output networks. Section \ref{section:Results} compares the proposed four output stages, and Section \ref{section:Conclusion} concludes this paper. \color{black}
 
 \section{Continuous Class F}
 \label{section:CCF}
 \vspace{-0.05in}
-Compared to class F, the CCF has an imaginary part added at the fundamental and $2^{nd}$ harmonic of voltage waveform. So, the generalized $V_{DS}$ for CCF is given by \cite{ECCF_Carrubba}:
+Compared to class F, the CCF has an imaginary part added at the fundamental and $2^{nd}$ harmonic of \color{blue} the \color{black} voltage waveform. \color{blue} Thus, \color{black} the generalized $V_{DS}$ for CCF is given by \cite{ECCF_Carrubba}:
 \begin{equation}
-V_{DS}=\underbrace{1}_{\text{DC}}-\underbrace{\frac{2}{\sqrt{3}} \cos \theta-\gamma \sin \theta}_{\text{Fundamental}}+\underbrace{\frac{7 \gamma}{6 \sqrt{3}} \sin 2 \theta}_{\text{$2^{nd}$ harmonic}}+\underbrace{\frac{1}{3 \sqrt{3}} \cos 3 \theta}_{\text{$3^{rd}$ harmonic}}
+V_{DS}=\underbrace{1}_{\text{DC}}-\underbrace{\frac{2}{\sqrt{3}} \cos \theta-\gamma \sin \theta}_{\text{fundamental}}+\underbrace{\frac{7 \gamma}{6 \sqrt{3}} \sin 2 \theta}_{\text{$2^{nd}$ harmonic}}+\underbrace{\frac{1}{3 \sqrt{3}} \cos 3 \theta}_{\text{$3^{rd}$ harmonic}}
 \label{eqn_CCF_V}
 \end{equation}
-$I_{D}$ is a half sinusoid as in class F and given by Eqn. \ref{eqn_CCF_I}. It is seen that $V_{DS}$ and $I_{D}$ are chosen in such a way that no power is dissipated at higher harmonics. Also, the $\gamma$ in Eqn. \ref{eqn_CCF_V} doesn’t affect drain efficiency ($\eta_D$) mathematically. But the voltage waveform’s shape (peak factor) depends on $\gamma$ which is depicted in Fig. \ref{fig:CCF_wave_VI}. 
-But in reality, $I_{D}$ depends on $V_{DS}$, so $\eta_D$ reduces as $\gamma$ increases.
+\color{blue} As in class F, \color{black} $I_{D}$ is a half sinusoid \color{blue} (given in (\ref{eqn_CCF_I})). These equations indicate that $V_{DS}$/$I_{D}$ \color{black}  are chosen in such a way that no power is dissipated at higher harmonics. Also, \color{blue} mathematically, \color{black} the $\gamma$ in \color{blue}(\ref{eqn_CCF_V}) does not \color{black}  affect drain efficiency ($\eta_D$). But \color{blue} it affects the peak drain voltage, as depicted in Fig. \ref{fig:CCF_wave_VI}. In reality, however, $I_{D}$ depends on $V_{DS}$, degrading $\eta_D$ as $\gamma$ increases.\color{black} 
 
 \begin{figure}[!t]
 \centering
@@ -135,8 +134,7 @@ But in reality, $I_{D}$ depends on $V_{DS}$, so $\eta_D$ reduces as $\gamma$ inc
 \vspace{-0.25in}
 \end{figure}
 
-Fig. \ref{fig:CCF_wave_VI} shows that at $\gamma$ = \textit{0}, waveform is like class F. For the $\gamma$ values between \textit{-1} and \textit{1}, $V_{DS}$ remains positive which enables CCF PA to have good linearity. One of the main downside of CCF PA is the increase in peak factor which reaches a value of \textit{3.12} times the supply ($V_{DD}$) when $\gamma$ = \textit{-1} or \textit{1}. 
-Load impedance for CCF are calculated using Eqn. \ref{eqn_CCF_V} and \ref{eqn_CCF_I} \cite{CCFDesign_ali}.
+Fig. \ref{fig:CCF_wave_VI} \color{blue} implies \color{black} that at $\gamma$ = \textit{0}, waveform is like class F. For the $\gamma$ values between \textit{-1} and \textit{1}, $V_{DS}$ remains positive\color{blue}, enabling CCF PA to meet linearity requirements. However, CCF PAs suffer from large peak drain voltage which can be as high as \textit{3.12} times the supply ($V_{DD}$) when $\gamma$ = \textit{-1} or \textit{1}. Using (\ref{eqn_CCF_V}) and (\ref{eqn_CCF_I}), the load impedances of CCF  are calculated \cite{CCFDesign_ali}.\color{black} 
 \begin{equation}
 \begin{aligned}
 Z_{1f}=\frac{4}{\sqrt{3}}+j 2 \gamma, \hspace{2mm}
@@ -146,7 +144,7 @@ Z_{3f}=\infty
 \end{aligned}
 \end{equation}
 
-In CCF, $Z_{3f}$ remains open-circuited similar to class F. Meanwhile, $Z_{1f}$ and $Z_{2f}$ has a reactive part, unlike class F. From the Eqn. \ref{eqn_CCF_imp} and Fig. \ref{fig:CCF_SC}, it is observed that if the reactive part of $Z_{1f}$ changes from inductive to capacitive, then the reactive part of $Z_{2f}$ need to change from capacitive to inductive or vice-versa across the bandwidth to achieve CCF operation. In the next section, the design procedure for the four output networks is illustrated step by step.
+In CCF, $Z_{3f}$ remains open-circuited similar to class F. Meanwhile, $Z_{1f}$ and $Z_{2f}$ \color{blue} have \color{black} a reactive part, unlike class F. From  \color{blue} (\ref{eqn_CCF_imp}) \color{black} and Fig. \ref{fig:CCF_SC}, it is observed that if the reactive part of $Z_{1f}$ changes from inductive to capacitive, then the reactive part of $Z_{2f}$ \color{blue}  needs \color{black} to change from capacitive to inductive or vice-versa across the bandwidth to achieve CCF operation. In the next section, the design procedure for the \color{blue}  proposed \color{black}  four output networks is \color{blue} meticulously explained. \color{black} 
 
 \begin{figure}[!t]
 \centering
@@ -204,7 +202,7 @@ Analysis of the schematics is done in differential and common mode by using the 
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
-\includegraphics[width=0.5\textwidth]{Images/Design/Design_A_FC.jpg}
+\includegraphics[width=0.5\textwidth]{Images/Design/Design_A_FC.png}
 \caption{Schematics}
 \label{fig:Design_A_FC}
 \end{subfigure}
@@ -361,15 +359,6 @@ So from the simulation, it is seen that design A outperforms other designs since
 \end{subfigure}
 \caption{(a) Maximum drain efficiency across frequency for four different output network; (b) Peak $P_{OUT}$ across frequency for four different output network.}
 \label{fig:Comp_Pout_DE}
-%\vspace{-0.25in}
-\end{figure}
-
-\begin{figure}[!t]
-\centering
-\captionsetup{font=footnotesize}
-\includegraphics[width=1\linewidth]{Images/Output_Network_Comp/ON_X1.jpg}
-\caption{Layout of the Design A (Balun, $L_2C_2$ and $C_L$).}
-\label{fig:ON_X1}
 \vspace{-0.25in}
 \end{figure}
 
