@@ -33,6 +33,7 @@
 \title{On-Chip Output Stage Design for a  Continuous Class F Power Amplifier}
 
 \author{\IEEEauthorblockN{Anil Kumar Kumaran\IEEEauthorrefmark{1},
+Masoud Pashaeifar\IEEEauthorrefmark{1}
 M. D'Avino\IEEEauthorrefmark{2},
 Leo C.N. de Vreede\IEEEauthorrefmark{1}, and 
 Morteza S. Alavi 
@@ -43,7 +44,7 @@ Morteza S. Alavi
 \maketitle
 
 \begin{abstract}
-Continuous Class F (CCF) power amplifiers (PAs) overcome Class F PA's disadvantage of narrow bandwidth by eliminating short-circuit requirements at the $2^{nd}$ harmonic. At the same time, CCF maintains a peak efficiency of \textit{90.7\%}, which is higher than the traditional Class A and B peak efficiency. This paper explains the equations governing the CCF output stage and explains the step by step procedure to design four different CCF output networks using lossless lumped components for a \textit{2.1 -- 2.7 GHz} band. The design comprising a second harmonic trap and no RF choke is chosen due to its  flatter real part impedance and smaller reactive part at the fundamental, and  the least number of on-chip lumped components. The selected design is laid out in a 40nm CMOS process with a passive efficiency of \textit{52\%}.
+Continuous Class F (CCF) power amplifiers (PAs) overcome Class F PA's disadvantage of narrow bandwidth by eliminating short-circuit requirements at the $2^{nd}$ harmonic. At the same time, CCF maintains a peak efficiency of \textit{90.7\%}, which is higher than the traditional Class A and B peak efficiency. This paper explains the equations governing the CCF output stage and explains the step by step procedure to design four different CCF output networks using lossless lumped components for a \textit{2.1 -- 2.7 GHz} band. The design comprising a second harmonic trap and no RF choke is chosen due to its  flatter real part impedance and smaller reactive part at the fundamental, and  the least number of on-chip lumped components. The selected design is laid out in a 40nm CMOS process with a passive efficiency of \textit{68\%}.
 \end{abstract}
 
 \vspace{1mm}
@@ -118,7 +119,7 @@ As in class F, $I_{D}$ is a half sinusoid (given in (\ref{eqn_CCF_I})). These eq
 \begin{figure}[!t]
 \centering
 \captionsetup{font=footnotesize}
-\includegraphics[width=3.4in, height=2in]{Images/CCF/CCF_wave_VI.jpg}
+\includegraphics[width=3.4in, height=2in]{Images/CCF/CCF_wave_VI.pdf}
 \caption{$V_{DS}$ and $I_D$ waveform for CCF with \textit{-1.5} $<$ $\gamma$ $<$ \textit{1.5}.}
 \label{fig:CCF_wave_VI}
 \vspace{-0.1in}
@@ -191,12 +192,12 @@ Analysis of the schematics is performed in differential-/common-mode scenarios b
 \label{fig:Design_A_FC}
 \end{subfigure}
 \begin{subfigure}[b]{0.24\textwidth}
-\includegraphics[width=1\textwidth]{Images/Design/Design_A_Diff.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_A_Diff.pdf}
 \caption{}
 \label{fig:Design_A_Diff}
 \end{subfigure}
 \begin{subfigure}[b]{0.24\textwidth}
-\includegraphics[width=1\textwidth]{Images/Design/Design_A_Com.jpg}
+\includegraphics[width=0.9\textwidth]{Images/Design/Design_A_Com.pdf}
 \caption{}
 \label{fig:Design_A_Com}
 \end{subfigure}
@@ -235,17 +236,18 @@ However, this leads to a lower $3^{rd}$ harmonic impedance, as showcased in Fig.
 \captionsetup{font=footnotesize}
 \centering
 \begin{subfigure}{0.24\textwidth}
-\includegraphics[width=1\textwidth]{Images/Design/Design_A_Zn_3H.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_A_Zn_3H.pdf}
 \caption{}
 \label{fig:Design_A_Zn_3H}
 \end{subfigure}
 \begin{subfigure}{0.24\textwidth}
-\includegraphics[width=1\textwidth]{Images/Design/Design_A_Rn_var_3H.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_A_Rn_var_3H.pdf}
 \caption{}
 \label{fig:Design_A_Rn_var_3H}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
-\includegraphics[width=1\textwidth]{Images/Design/Design_A_Rn_var_1H.jpg}
+\centering
+\includegraphics[width=1\textwidth]{Images/Design/Design_A_Rn_var_1H.pdf}
 \caption{}
 \label{fig:Design_A_Rn_var_1H}
 \end{subfigure}
@@ -262,22 +264,22 @@ The five unknowns in the circuit: $km$, $N$, $L_P$, $C_2$, and $C_L$ can be calc
 \begin{figure}[!t]
 \captionsetup{font=footnotesize}
 \centering
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.15\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{Images/Design/Design_B_FC.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_B_FC.pdf}
 \caption{}
 \label{fig:Design_B_FC}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.15\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{Images/Design/Design_C_FC.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_C_FC.pdf}
 \caption{}
 \label{fig:Design_C_FC}
 \end{subfigure}
 \centering
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.15\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{Images/Design/Design_D_FC.jpg}
+\includegraphics[width=1\textwidth]{Images/Design/Design_D_FC.pdf}
 \caption{}
 \label{fig:Design_D_FC}
 \end{subfigure}
@@ -286,16 +288,7 @@ The five unknowns in the circuit: $km$, $N$, $L_P$, $C_2$, and $C_L$ can be calc
 \vspace{-0.25in}
 \end{figure}
 
-%\begin{figure}[!t]
-%\centering
-%\captionsetup{font=footnotesize}
-%\includegraphics[width=0.93\linewidth]{Images/Output_Network_Comp/Design_B_C_D_FC.jpg}
-%\caption{(a) Design B (Balun and $C_L$), (b) Design C (Balun, RF Choke, $L_2C_2$ \& $C_L$), and (c) Design D (Balun, RF Choke \& $C_L$).}
-%\label{fig:Design_B_C_D}
-%\vspace{-0.25in}
-%\end{figure}
-
-In this design (Fig. \ref{fig:Design_B_FC}), $L_2C_2$ is removed, reducing the number of unknowns. Like the previous case, differential mode analysis yields four equations and there are four unknowns, thus leading to a single set of values for $km =$ \textit{0.72}, $N =$ \textit{0.9}, $L_P =$ \textit{0.63 nH}, $C_L =$ \textit{3.96 pF}, unlike design A. $C_{DCP}$ is tuned to provide a short at $2\omega_0$ such that $C_{DCP}$ resonates with $L_P$, $L_{BND}$, and $C_{DS}$, which is obtained from the common-mode analysis. Moreover, $C_{DCP}$ provides RF ground and blocks DC.
+In this design (Fig. \ref{fig:Design_B_FC}), $L_2C_2$ is removed, reducing the number of unknowns. Like the previous case, differential mode analysis yields four equations and there are four unknowns, thus leading to a single set of values for $km =$ \textit{0.72}, $N =$ \textit{0.9}, $L_P =$ \textit{0.63 nH}, $C_L =$ \textit{3.96 pF}, unlike design A. $C_{DDP}$ is tuned to provide a short at $2\omega_0$ such that $C_{DDP}$ resonates with $L_P$, $L_{BND}$, and $C_{DS}$, which is obtained from the common-mode analysis. Moreover, $C_{DDP}$ provides RF ground and blocks DC.
 
 \subsection{Design C (with RF choke \& with $L_2C_2$)}
 In this design (Fig. \ref{fig:Design_C_FC}), $V_{DD}$ is supplied through RF choke, unlike the previous designs. RF chokes are assumed to have a fixed value of \textit{5 nH}. The differential mode analysis yields four equations similar to design A. Assuming $km =$ \textit{0.8}, the other unknowns are calculated as $N =$ \textit{1.14}, $L_P =$ \textit{2.23 nH}, $C_L =$ \textit{1.10 pF}, $C_2 =$ \textit{1.37 pF}.
@@ -304,24 +297,24 @@ Like design A, $C_2$ should resonate out with $L_2$ to get short at $2\omega_0$.
 \subsection{Design D (with RF choke \& no $L_2C_2$)}
  Unlike design C, $L_2C_2$ is removed in this design (Fig. \ref{fig:Design_D_FC}). Also, RF choke should be calculated, assuming $C_{DS}$ resonates with it at $\omega_0$ (RF Choke = \textit{2.35 nH}).
 The differential mode analysis yields four equations and the four unknowns ($N =$ \textit{0.84}, $L_P =$ \textit{0.86 nH}, $C_L =$ \textit{3.95 pF}, $km =$ \textit{0.77}) can be calculated.
-$C_{DCP}$ can be tuned to provide a short at $2\omega_0$.
+$C_{DDP}$ can be tuned to provide a short at $2\omega_0$.
 
 \begin{figure}[!t]
 	\captionsetup{font=footnotesize}
 	\centering
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[width=0.65\textwidth]{Images/Output_Network_Comp/Comp_1H.jpg}
+		\includegraphics[width=0.65\textwidth]{Images/Output_Network_Comp/Comp_1H.pdf}
 		\caption{}
 		\label{fig:Comp_1H}
 	\end{subfigure}
 	\begin{subfigure}{0.24\textwidth}
-		\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_2H_imag.jpg}
+		\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_2H_imag.pdf}
 		\caption{}
 		\label{fig:Comp_2H_imag}
 	\end{subfigure}
 	\begin{subfigure}{0.24\textwidth}
-		\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_3H_Mag.jpg}
+		\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_3H_Mag.pdf}
 		\caption{}
 		\label{fig:Comp_3H_Mag}
 	\end{subfigure}
@@ -334,36 +327,37 @@ $C_{DCP}$ can be tuned to provide a short at $2\omega_0$.
 \label{section:Results}
 
 Fig. \ref{fig:Comp_1H_2H_3H}a/b show that all the four designs satisfying the main CCF requirement that is decreasing trend of the reactive part at the fundamental and increasing trend of the reactive part at $2^{nd}$ harmonic.
-As illustrated in Fig. \ref{fig:Comp_1H}, the real part at the fundamental is flatter in the bandwidth \textit{2.1 -- 2.7 GHz} for design A and C, which, in turn, leads to constant $P_{OUT}$ in the specified bandwidth unlike design B and D. The $L_2C_2$, which acts as a varying capacitor at fundamental holds the reason for this. The designs B and D have a higher reactive part at the fundamental as compared to other designs, which in turn, leads to larger $\gamma$ value and thus, higher peak drain voltage (Fig. \ref{fig:CCF_wave_VI}). Fig. \ref{fig:Comp_1H_2H_3H}b/c show that all the four designs have similar response at $2^{nd}$ and $3^{rd}$ harmonic. Thus, from the simulation, it is seen that design A outperforms other designs since it has the least number of components and more constant $P_{\text{OUT}}$ in the specified bandwidth. The design A is tested with an ideal output stage (single transistor acting  as a current source when turned on) in ADS with lossless and lossy components (quality factor of \textit{7} for inductors, \textit{13} for transformer and \textit{100} for capacitors) to calculate peak $P_{OUT}$ and $\eta_D$ (Fig. \ref{fig:Comp_Pout_DE}). Furthermore, design A was implemented in TSMC 40 nm (Fig. \ref{fig:ON_X1}) and tested with the ideal output stage. The $km$ value was reduced to \textit{0.69} so as to achieve a layout friendly $L_P$ and $L_S$ and consequently, all the parameters were re-calculated as explained earlier. From Fig. \ref{fig:Comp_DE_loss_layout}, the proposed design in layout achieves a passive efficiency of \textit{52\%}.
+As illustrated in Fig. \ref{fig:Comp_1H}, the real part at the fundamental is flatter in the bandwidth \textit{2.1 -- 2.7 GHz} for design A and C, which, in turn, leads to constant $P_{OUT}$ in the specified bandwidth unlike design B and D. The $L_2C_2$, which acts as a varying capacitor at fundamental holds the reason for this. The designs B and D have a higher reactive part at the fundamental as compared to other designs, which in turn, leads to larger $\gamma$ value and thus, higher peak drain voltage (Fig. \ref{fig:CCF_wave_VI}). Fig. \ref{fig:Comp_1H_2H_3H}b/c show that all the four designs have similar response at $2^{nd}$ and $3^{rd}$ harmonic. Thus, from the simulation, it is seen that design A outperforms other designs since it has the least number of components and more constant $P_{\text{OUT}}$ in the specified bandwidth. 
+Further, design A is laid out in TSMC 40nm (Fig. \ref{fig:ON_X1}) with a balun of diameter \textit{600 um}. However, the $km$ value was reduced to \textit{0.69} so as to achieve a layout friendly $L_P$ and $L_S$ and consequently, all the parameters were re-calculated as explained earlier. Then, the lossless circuit, the lossy circuit (quality factor of \textit{7} for inductors, \textit{13} for transformer and \textit{100} for capacitors) and the layout of design A is tested with an ideal output stage (single transistor acting  as a current source when turned on) in ADS to calculate peak $P_{OUT}$ and $\eta_D$ (Fig. \ref{fig:Comp_Pout_DE}). From Fig. \ref{fig:Comp_DE_loss_layout}, it is seen that momentum simulation and circuit level simulation with lossy components have similar response and the proposed layout achieves a passive efficiency of \textit{68\%}. There is around \textit{1.5 dBm} loss in the maximum $P_{OUT}$ with the layout of the design A output network as seen in Fig. \ref{fig:Comp_Pout_loss_layout}.
 
+\begin{figure}[!t]
+\centering
+\captionsetup{font=footnotesize}
+\includegraphics[width=1\linewidth]{Images/Output_Network_Comp/Balun_V1.jpg}
+\caption{Layout of the design A (balun, $L_2C_2$ and $C_L$).}
+\label{fig:ON_X1}
+\vspace{-0.1in}
+\end{figure}
 
 \begin{figure}[!t]
 \captionsetup{font=footnotesize}
 \centering
 \begin{subfigure}{0.24\textwidth}
 \centering
-\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_DE_loss_layout.jpg}
+\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_DE_loss_layout_km0p69.pdf}
 \caption{}
 \label{fig:Comp_DE_loss_layout}
 \end{subfigure}
 \begin{subfigure}{0.24\textwidth}
-\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_Pout_loss_layout.jpg}
+\includegraphics[width=1\textwidth]{Images/Output_Network_Comp/Comp_Pout_loss_layout_km0p69.pdf}
 \caption{}
 \label{fig:Comp_Pout_loss_layout}
 \end{subfigure}
 \caption{Maximum  (a) drain efficiency, and (b) $P_{OUT}$, versus frequency band.}
 \label{fig:Comp_Pout_DE}
-\vspace{-0.1in}
-\end{figure}
-
-\begin{figure}[!t]
-\centering
-\captionsetup{font=footnotesize}
-\includegraphics[width=1\linewidth]{Images/Output_Network_Comp/ON_Pads_BB.jpg}
-\caption{Layout of the design A (balun, $L_2C_2$ and $C_L$).}
-\label{fig:ON_X1}
 \vspace{-0.25in}
 \end{figure}
+
 
 %\begin{figure}[!t]
 %\centering
@@ -385,7 +379,7 @@ As illustrated in Fig. \ref{fig:Comp_1H}, the real part at the fundamental is fl
 
 \section{Conclusion}
 \label{section:Conclusion}
-This paper presented CCF's wide operational bandwidth advantage over its class F companion. It detailed the primary requirement of the CCF PA output network, which is if the reactive part of $1^{st}$ harmonic decreases, then the reactive part of $2^{nd}$ harmonic should increase. Furthermore, the procedure to design the four different output networks for the \textit{2.1 -- 2.7 GHz} band was proposed and analyzed in detail.  Consequently, design A, with no RF choke and  including a 2$^{nd}$ harmonic trap, was chosen because it offers relatively constant output RF power in the desired frequency band with the least number of lumped components. Further, layout of design A was implemented in TSMC 40nm and it achieved a passive efficiency of \textit{52\%}.
+This paper presented CCF's wide operational bandwidth advantage over its class F companion. It detailed the primary requirement of the CCF PA output network, which is if the reactive part of $1^{st}$ harmonic decreases, then the reactive part of $2^{nd}$ harmonic should increase. Furthermore, the procedure to design the four different output networks for the \textit{2.1 -- 2.7 GHz} band was proposed and analyzed in detail.  Consequently, design A, with no RF choke and  including a 2$^{nd}$ harmonic trap, was chosen because it offers relatively constant output RF power in the desired frequency band with the least number of lumped components. Further, layout of design A was implemented in TSMC 40nm and it achieved a passive efficiency of \textit{68\%}.
 
 \bibliographystyle{IEEEtran}
 \bibliography{disseration.bib}
