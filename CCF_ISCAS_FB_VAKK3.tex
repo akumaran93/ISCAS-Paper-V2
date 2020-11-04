@@ -280,34 +280,6 @@ The five unknowns in the circuit: $k_m$, $n$, $L_P$, $C_2$, and $C_L$ can be cal
 
 
 \subsection{Design B (no RF Choke \& no $L_2C_2$)}
-
-%\begin{figure}[!t]
-%\captionsetup{font=footnotesize}
-%\centering
-%\begin{subfigure}{0.2\textwidth}
-%\centering
-%\includegraphics[width=1\textwidth]{Images/Design/Design_B_FC.pdf}
-%\caption{}
-%\label{fig:Design_B_FC}
-%\end{subfigure}
-%\begin{subfigure}{0.26\textwidth}
-%\centering
-%\includegraphics[width=1\textwidth]{Images/Design/Design_C_FC.pdf}
-%\caption{}
-%\label{fig:Design_C_FC}
-%\end{subfigure}
-%\centering
-%\begin{subfigure}{0.24\textwidth}
-%\centering
-%\includegraphics[width=1\textwidth]{Images/Design/Design_D_FC.pdf}
-%\caption{}
-%\label{fig:Design_D_FC}
-%\end{subfigure}
-%\caption{(a) Design B (Balun and $C_L$), (b) Design C (Balun, RF choke, $L_2C_2$ \& $C_L$), and (c) Design D (Balun, RF choke \& $C_L$).}
-%\label{fig:Design_B_C_D}
-%\vspace{-0.25in}
-%\end{figure}
-
 In this design (Fig. \ref{fig:Design_B_FC}), $L_2C_2$ is removed, reducing the number of unknowns. Like the previous case, differential mode analysis yields four equations, and there are four unknowns, thus leading to a single set of values for $k_m=$ 0.72, $n =$ 0.9, $L_P =$ 0.63nH, $C_L =$ 3.96pF, unlike design A. $C_{DDP}$ is tuned to provide a short at $2\omega_0$ such that $C_{DDP}$ resonates with $L_P$, $L_{BND}$, and $C_{DS}$, which is obtained from the common-mode analysis. Moreover, $C_{DDP}$ provides RF ground and blocks DC.
 
 \subsection{Design C (with RF Choke \& with $L_2C_2$)}
@@ -349,7 +321,6 @@ $C_{DDP}$ can be tuned to provide a short at $2\omega_0$.
 Fig. \ref{fig:Comp_1H_2H_3H} shows that all the four designs satisfy the main CCF requirement, which is a decreasing trend of the reactive part at the fundamental and increasing trend of the reactive part at $2^{nd}$ harmonic. As illustrated in Fig. \ref{fig:Comp_1H}, the real part in the desired frequency band is flatter for design A/C, which leads to constant $P_{OUT}$, unlike design B/D. Moreover, to fully accomplish CCF operation, the series $L_2C_2$, which resonates at the $2^{nd}$ harmonic, acts as a capacitor at the desired band. The designs B/D have a higher reactive part at the fundamental than other designs, contributing to a larger $\gamma$ value and, thus, higher peak drain voltage (Fig. \ref{fig:CCF_wave_VI}). Fig. \ref{fig:Comp_1H_2H_3H}b/c show that all designs have a similar response at $2^{nd}$/$3^{rd}$ harmonics. Nevertheless, design A generates a more constant $P_{\text{OUT}}$ in the band of interest and allows the use of compact passive components. 
 
 To verify the proposed output passive stage design approach,  design A is laid out in an LP 40nm CMOS process (Fig. \ref{fig:ON_X1}) with a 600$\mu m$ balun. Subsequently, design A is simulated in three different ways: as a lossless network, with losses using a quality factor of 7/13/100 for the inductors/balun/capacitors, respectively, and as the proposed layout. The ADS (Momentum) simulation results are depicted in Fig. \ref{fig:Comp_Pout_DE}, which indicates a good agreement between the lossy and the proposed layout, reaching 68\% passive efficiency at 2.4GHz. Moreover, using an ideal push-pull PA, the proposed design achieves peak RF output power/drain efficiency of more than 25dBm/62\%, respectively, over the desired frequency band.
-%The proposed design is compared with other State-of-the-Art CCF CMOS PAs in Tab. \ref{tab:State_of_Art}. 
 
 \begin{figure}[!t]
 \centering
@@ -379,67 +350,10 @@ To verify the proposed output passive stage design approach,  design A is laid o
 \vspace{-0.25in}
 \end{figure}
 
-%\setlength{\arrayrulewidth}{0.1mm}
-%\setlength{\tabcolsep}{2pt}
-%\renewcommand{\arraystretch}{1.2}
-%\begin{table}[!t]
-%\centering
-%\captionsetup{font=footnotesize}
-%\caption{PERFORMANCE COMPARISON WITH CCF CMOS PAS}
-%\label{tab:State_of_Art}
-%\begin{threeparttable}
-%\resizebox{\linewidth}{!}{%
-%\begin{tabular}{|c|c|c|c|c|c|c|}
-%\hline
-%Ref. & \textbf{\begin{tabular}[c]{@{}c@{}}This\\ work\tnote{*}\end{tabular}} & \begin{tabular}[c]{@{}c@{}}RFIT'20\\ \cite{RFIT20}\end{tabular} & \begin{tabular}[c]{@{}c@{}}APMC'19\\ \cite{APMC19}\end{tabular} & \begin{tabular}[c]{@{}c@{}}RFIC'18\\ \cite{RFIC18}\end{tabular} & \begin{tabular}[c]{@{}c@{}}ISSCC'18\\ \cite{ISSC18}\end{tabular} & \begin{tabular}[c]{@{}c@{}}RFIC'17\\ \cite{RFIC17}\end{tabular} \\ \hline
-%Tech. & \textbf{40nm} & 65nm & 90nm & 45nm SOI & 65nm & 65nm \\ \hline
-%\begin{tabular}[c]{@{}c@{}}Freq.\\ (GHz)\end{tabular} & \textbf{2.1--2.7} & 24--30 & 26--31 & 28--39 & 26.5--31\tnote{+}  & 26--34 \\ \hline
-%\begin{tabular}[c]{@{}c@{}}Max. Pout\\ (dBm)\end{tabular} & \textbf{25.7} & 18.4 & 15.5 & 18.5 & 15.6 & 14.8 \\ \hline
-%\begin{tabular}[c]{@{}c@{}}Max. PAE\\ (\%)\end{tabular} & %\textbf{52.3} & 37.7 & 32 & 45.7 & 41 & 46.4 \\ \hline
-%Topology & \textbf{CCF} & CCF & CCF & \begin{tabular}[c]{@{}c@{}}Hybrid of\\ CCF/F$^{-1}$\end{tabular} & CCF & CCF \\ \hline
-%\end{tabular}%
-% }
-%\begin{tablenotes}
-%  \item[*] Momentum simulation of design A output network with ideal device.
-%  \item[+] Estimate from figure.
-%  \end{tablenotes}
-%\end{threeparttable} 
-%\vspace{-0.25in}
-%\end{table}
-
-%\setlength{\arrayrulewidth}{0.1mm}
-%\setlength{\tabcolsep}{2pt}
-%\renewcommand{\arraystretch}{1.2}
-%\begin{table}[!t]
-%\centering
-%\captionsetup{font=footnotesize}
-%\caption{PERFORMANCE COMPARISON WITH CCF CMOS PAS}
-%\label{tab:Output_Network_Requirements}
-%\resizebox{\linewidth}{!}{%
-%\begin{tabular}{|c|c|c|c|c|c|}
-%\hline
-%Ref. & Tech. & \begin{tabular}[c]{@{}c@{}}Freq. \\ (GHz)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Max. Pout \\ (dBm)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Max. PAE \\ (\%)\end{tabular} & Topology \\ \hline
-%\textbf{\begin{tabular}[c]{@{}c@{}}This\\ work\end{tabular}} & \textbf{40nm} & \textbf{2.1--2.7} & \textbf{25.7} & \textbf{52.3} & \textbf{CCF} \\ \hline
-%\begin{tabular}[c]{@{}c@{}}RFIT'20\\ \cite{RFIT20}\end{tabular} & 65nm & 24--30 & 18.4 & 37.7 & CCF \\ \hline
-%\begin{tabular}[c]{@{}c@{}}APMC'19\\ \cite{APMC19}\end{tabular} & 90nm & 26--31 & 15.5 & 32 & CCF \\ \hline
-%\begin{tabular}[c]{@{}c@{}}RFIC'18\\ \cite{RFIC18}\end{tabular} & \begin{tabular}[c]{@{}c@{}}45nm \\ SOI\end{tabular} & 28--39 & 18.5 & 45.7 & \begin{tabular}[c]{@{}c@{}}Hybrid of\\ CCFF-1\end{tabular} \\ \hline
-%\begin{tabular}[c]{@{}c@{}}ISSCC'18\\ \cite{ISSC18}\end{tabular} & 65nm & 26.5--31* & 15.6 & 41 & CCF \\ \hline
-%\begin{tabular}[c]{@{}c@{}}RFIC'17\\ \cite{RFIC17}\end{tabular} & 65nm & 26--34 & 14.8 & 46.4 & CCF \\ \hline
-%\end{tabular}%
-%}
-%\vspace{-0.25in}
-%\end{table}
-
-
 \section{Conclusion}
 \label{section:Conclusion}
-In this paper, the primary advantage of CCF PAs over its class--F companion, as well as the critical requirement needed for the output network to operate in CCF mode are presented. 
-%The paper details the critical requirement of the CCF PA output network, that is if the $1^{st}$ harmonic reactive part decreases, then its $2^{nd}$ harmonic reactive part should increase to maintain CCF's peak efficiency in the band of interest. 
-Furthermore, the design procedure of various output networks for the 2.1--2.7GHz band is presented, and the proposed passive output stages are synthesized.  
-The $2^{nd}$ harmonic trap, which acts as a varying capacitor at $1^{st}$ harmonic, helps in maintaining constant output RF power in the desired frequency band for the design A/C. 
-Consequently, design A, with no RF choke and a 2$^{nd}$ harmonic trap is chosen since it has minimal on-chip passive components. 
-%due to its relatively constant output RF power in the desired frequency band with minimal on-chip passive components. 
-This design is laid out in a 40nm CMOS while achieving a 68\% passive efficiency at 2.4GHz.
+In this paper, the primary advantage of CCF PAs over its class--F companion, as well as the critical requirement needed for the output network to operate in CCF mode are presented. Furthermore, the design procedure of various output networks for the 2.1--2.7GHz band is presented, and the proposed passive output stages are synthesized.  
+The $2^{nd}$ harmonic trap, which acts as a varying capacitor at $1^{st}$ harmonic, helps in maintaining constant output RF power in the desired frequency band for the design A/C. Consequently, design A, with no RF choke and a 2$^{nd}$ harmonic trap is chosen since it has minimal on-chip passive components. This design is laid out in a 40nm CMOS while achieving a 68\% passive efficiency at 2.4GHz.
 
 \bibliographystyle{IEEEtran}
 \bibliography{ISCASvABS.bib}
